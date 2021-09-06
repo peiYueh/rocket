@@ -12,6 +12,11 @@ const routes = [
     name: "Rocket",
     component: () => import("@/pages/Rocket"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("@/pages/NotFound"),
+  },
 ] as RouteRecordRaw[];
 
 const router = createRouter({

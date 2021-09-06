@@ -1,19 +1,27 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 import { NLayout, NH2, NInput, NIcon, NButton } from "naive-ui";
 import { Rocket, User } from "@vicons/carbon";
-import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "Boarding",
   setup() {
     const { push } = useRouter();
+    const name = ref("");
 
-    const goRocket = () => push("/rocket");
+    const updateName = (input: string) => (name.value = input);
+    const goRocket = () => {
+      if (name.value === "") {
+        alert("Name cannot be empty");
+        return;
+      }
+      push({ path: "/rocket", query: { name: name.value } });
+    };
 
-    return { goRocket };
+    return { updateName, goRocket };
   },
   render() {
-    const { goRocket } = this;
+    const { updateName, goRocket } = this;
 
     const inputSlots = {
       prefix: () => (
@@ -43,7 +51,13 @@ export default defineComponent({
         }}
       >
         <NH2 class="mb-3">Enter your name to enter</NH2>
-        <NInput placeholder="Name" round v-slots={inputSlots} />
+        <NInput
+          type="text"
+          placeholder="Name"
+          round
+          v-slots={inputSlots}
+          onUpdateValue={(input) => updateName(input)}
+        />
         <NButton
           round
           size="small"

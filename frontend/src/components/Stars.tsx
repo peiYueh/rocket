@@ -23,9 +23,9 @@ export const Stars = defineComponent({
                 left: `${x}px`,
                 width: `${1}px`,
                 height: `${h}px`,
+                transform: `translateY(${y}px)`,
                 animation: animate ? "animateStars linear infinite" : "",
                 animationDuration: `${duration}s`,
-                transform: `translateY(${y}px)`,
               }}
               class="absolute bg-white opacity-50"
             />

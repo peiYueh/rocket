@@ -1,6 +1,5 @@
 import { defineComponent } from "vue";
-import { RouterView } from "vue-router";
-import { darkTheme, NConfigProvider, NThemeEditor } from "naive-ui";
+import { Provider, Viewer } from "@/components";
 
 import "virtual:windi.css";
 import "@/styles/global.css";
@@ -12,17 +11,12 @@ import "vfonts/FiraCode.css";
 
 export default defineComponent({
   name: "App",
-  setup() {
-    return () => (
-      <NConfigProvider theme={darkTheme}>
-        {import.meta.env.DEV ? (
-          <NThemeEditor>
-            <RouterView />
-          </NThemeEditor>
-        ) : (
-          <RouterView />
-        )}
-      </NConfigProvider>
+  setup() {},
+  render() {
+    return (
+      <Provider>
+        <Viewer />
+      </Provider>
     );
   },
 });
