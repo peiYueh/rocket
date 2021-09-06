@@ -1,8 +1,9 @@
 import { defineComponent } from "vue";
+import { RouterView } from "vue-router";
 import { darkTheme, NConfigProvider, NThemeEditor } from "naive-ui";
-import { Boarding } from "@/components";
 
 import "virtual:windi.css";
+import "@/styles/global.css";
 
 // General Font
 import "vfonts/Inter.css";
@@ -14,9 +15,13 @@ export default defineComponent({
   setup() {
     return () => (
       <NConfigProvider theme={darkTheme}>
-        <NThemeEditor>
-          <Boarding />
-        </NThemeEditor>
+        {import.meta.env.DEV ? (
+          <NThemeEditor>
+            <RouterView />
+          </NThemeEditor>
+        ) : (
+          <RouterView />
+        )}
       </NConfigProvider>
     );
   },

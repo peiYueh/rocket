@@ -1,1 +1,1 @@
-export * from "./Boarding";
+export * from "./Stars";
