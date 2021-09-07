@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat</title>
+        <style>
+            .messageSent{
+                color: black;
+                background-color: rgba(181, 105, 248, 0.308);
+                border-radius: 10%;
+                width: 160px;
+                flex-wrap: wrap;
+                text-align: center;
+                margin: 10px;
+            }
+            input{
+                margin: 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>{{ username }}的祝福语</h1>
+        <form action="" onsubmit="sendMessage(event)">
+            <!-- <input type="text" id="username" autocomplete="off" placeholder="Enter your name"> <br> -->
+            <input type="text" id="messageText" autocomplete="off" placeholder="写下你的祝福语" onfocus="this.value=''" autofocus/>
+            <button id="send">Send</button>
+        </form>
+        <div id='messages'>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js" integrity="sha512-WL6WGKMPBiM9PnHRYIn5YEtq0Z8XP4fkVb4qy7PP4vhmYQErJ/dySyXuFIMDf1eEYCXCrQrMJfkNwKc9gsjTjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            var client_id = Date.now() //not using actually
+            //var client = document.querySelector("#username").value;
+            var ws = new WebSocket(`ws://localhost:8000/ws/${client_id}`);
+            ws.onmessage = function(event) {
+                console.log(event)
+                var messages = document.getElementById('messages')
+                var message = document.createElement('div')
+                message.className = "messageSent"
+                var content = document.createTextNode(event.data)
+                message.appendChild(content)
+                messages.appendChild(message)
+            };
+            function sendMessage(event) {
+                var input = document.getElementById("messageText").value
+                //var user = document.getElementById("username").value
+                ws.send(input)
+                document.getElementById("messageText").value = null;
+                event.preventDefault();
+            }
+        </script>
+    </body>
+</html>
