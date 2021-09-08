@@ -611,6 +611,21 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.8.tgz#2f918e330aeb3f56ab1031ca60a5b30672512457"
   integrity sha512-E2DQQnG7Qr4GwTs3GlfPPlHliGVADoufTnhpwfoViw7JlyLMmYtjfnTwM6nXAwvSJWiF7D+7AxpnWBBT3VWo6Q==
 
+"@vueuse/core@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-6.3.1.tgz#a3ab6096c4167adf22f224327f427a5619550eaf"
+  integrity sha512-TOP3bFShkLEN5gaq8Jbqmh9lh0udMhFNMxAVvHCkWQbgzkjYBEt9uROvVgYucD/NajyQXCV6Z14jbgNtDyl1kg==
+  dependencies:
+    "@vueuse/shared" "6.3.1"
+    vue-demi "*"
+
+"@vueuse/shared@6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.3.1.tgz#136784f2b181d3437f49f3685a04457c2193ad8f"
+  integrity sha512-XQjq1KcD85JwjyBK955j7mVkoZyUcWQA+BvCeOq6lzbrLspDqtTdJ+KGLLlqg0TjXCb+IOT8B7+g6fL6f/iHfA==
+  dependencies:
+    vue-demi "*"
+
 "@windicss/config@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.3.0.tgz#9752e9ef443db7d08a22c3df764b3cb4a655eb58"
@@ -2170,6 +2185,11 @@ vscode-vue-languageservice@^0.27.0:
     vscode-languageserver-textdocument "^1.0.1"
     vscode-pug-languageservice "^0.27.13"
     vscode-typescript-languageservice "^0.27.13"
+
+vue-demi@*:
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.11.4.tgz#6101992fe4724cf5634018a16e953f3052e94e2a"
+  integrity sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==
 
 vue-router@4:
   version "4.0.11"

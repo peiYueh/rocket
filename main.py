@@ -5,6 +5,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 
+TARGET_MESSAGE_THRESHOLD = 10000
+
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
@@ -39,20 +41,31 @@ async def get(request: Request, username):
     return templates.TemplateResponse("index.html", {"request": request, "username": username})
 
 # to keep track how many messages are sent
-message = []
+messages_store: List[dict] = []
 
-@app.websocket("/ws/{client_id}")
-async def websocket_endpoint(websocket: WebSocket, client_id: str):
+@app.websocket("/ws/{username}")
+async def websocket_endpoint(websocket: WebSocket, username: str):
     await manager.connect(websocket)
     try:
         while True:
             data = await websocket.receive_text()
-            await manager.broadcast(f"{data}")
-            message.append(".")
-            print(len(message))
-            # broadcast a message when it reaches a specific number
-            if len(message) == 10:
-                await manager.broadcast("YAYYAY")
+            msg = f"{username}: {data}"
+
+            # Broadcast the message received
+            await manager.broadcast(msg)
+
+            # Do not append heartbeat message
+            if not data == "heartbeat":
+                messages_store.append({"username": username, "message": data})
+
+            # Broadcast a message when it reaches a specific number
+            if len(messages_store) == TARGET_MESSAGE_THRESHOLD:
+                await manager.broadcast("GO TO MOON!")
+
+            # Log the message
+            print(msg)
+            print(f"Message count: {len(messages_store)}")
+
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         # dont think that we are using it

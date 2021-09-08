@@ -1,4 +1,9 @@
-import { NConfigProvider, NLoadingBarProvider, darkTheme } from "naive-ui";
+import {
+  NConfigProvider,
+  NLoadingBarProvider,
+  NNotificationProvider,
+  darkTheme,
+} from "naive-ui";
 import { defineComponent } from "vue";
 
 export const Provider = defineComponent({
@@ -11,7 +16,9 @@ export const Provider = defineComponent({
     return (
       <NConfigProvider theme={darkTheme}>
         <NLoadingBarProvider>
-          {slots.default && slots.default()}
+          <NNotificationProvider>
+            {slots.default && slots.default()}
+          </NNotificationProvider>
         </NLoadingBarProvider>
       </NConfigProvider>
     );
