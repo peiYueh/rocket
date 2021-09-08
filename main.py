@@ -29,13 +29,17 @@ class ConnectionManager:
 
 
 manager = ConnectionManager()
-
-
-@app.get("/", response_class=HTMLResponse)
-async def get(request: Request):
+username_list = []
+@app.get("/{username}", response_class=HTMLResponse)
+async def get(request: Request, username): 
     #return HTMLResponse(html)
-    return templates.TemplateResponse("index.html", {"request": request})
+    if username not in username_list:
+        username_list.append(username)
+    print(username_list)
+    return templates.TemplateResponse("index.html", {"request": request, "username": username})
 
+# to keep track how many messages are sent
+message = []
 
 @app.websocket("/ws/{client_id}")
 async def websocket_endpoint(websocket: WebSocket, client_id: str):
@@ -44,6 +48,12 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
         while True:
             data = await websocket.receive_text()
             await manager.broadcast(f"{data}")
+            message.append(".")
+            print(len(message))
+            # broadcast a message when it reaches a specific number
+            if len(message) == 10:
+                await manager.broadcast("YAYYAY")
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        await manager.broadcast(f"Client #{client_id} left the chat")
+        # dont think that we are using it
+        #await manager.broadcast(f"Client #{client_id} left the chat")
