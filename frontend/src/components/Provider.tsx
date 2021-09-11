@@ -1,5 +1,6 @@
 import {
   NConfigProvider,
+  NMessageProvider,
   NLoadingBarProvider,
   NNotificationProvider,
   darkTheme,
@@ -17,7 +18,9 @@ export const Provider = defineComponent({
       <NConfigProvider theme={darkTheme}>
         <NLoadingBarProvider>
           <NNotificationProvider>
-            {slots.default && slots.default()}
+            <NMessageProvider>
+              {slots.default && slots.default()}
+            </NMessageProvider>
           </NNotificationProvider>
         </NLoadingBarProvider>
       </NConfigProvider>

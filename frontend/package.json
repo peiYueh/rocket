@@ -9,7 +9,8 @@
   "dependencies": {
     "@vueuse/core": "^6.3.1",
     "vue": "^3.2.6",
-    "vue-router": "4"
+    "vue-router": "4",
+    "vue3-danmaku": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^16.7.5",

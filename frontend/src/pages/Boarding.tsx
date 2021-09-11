@@ -1,4 +1,4 @@
-import { defineComponent, ref } from "vue";
+import { withModifiers, defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 import { NLayout, NH2, NInput, NIcon, NButton } from "naive-ui";
 import { Rocket, User } from "@vicons/carbon";
@@ -57,6 +57,7 @@ export default defineComponent({
           round
           v-slots={inputSlots}
           onUpdateValue={(input) => updateName(input)}
+          onKeydown={(e) => e.key === "Enter" && goRocket()}
         />
         <NButton
           round
