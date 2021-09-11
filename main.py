@@ -133,7 +133,7 @@ async def websocket_endpoint(websocket: WebSocket, username: str):
     await manager.connect(websocket, username)
 
     # PM the current system state
-    await manager.send_personal_message(json.dumps({"type": "state", "state": context.state.text}), websocket)
+    await manager.send_personal_message(json.dumps({"type": "state", "state": context.state.text, "messages_count": len(messages_store)}), websocket)
 
     # PM the user the whole users list
     await manager.send_personal_message(json.dumps(manager.active_users), websocket)

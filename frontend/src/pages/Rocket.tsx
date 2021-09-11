@@ -68,14 +68,21 @@ export default defineComponent({
     const moonOpacity = ref(0);
     const rocketOpacity = ref(100);
     const usersOpacity = ref(100);
+    const serverMessagesCount = ref(0);
 
     const { query } = useRoute();
     const { name } = query;
 
     const danmus = computed(() => [...messages.value]);
     const percentage = computed(() => {
-      return (messages.value.length / TARGET_MESSAGE_THRESHOLD) * 100;
+      return (
+        ((messages.value.length + serverMessagesCount.value) /
+          TARGET_MESSAGE_THRESHOLD) *
+        100
+      );
     });
+
+    watch(percentage, () => console.log(percentage.value));
 
     const moonOpacityTransition = useTransition(moonOpacity, {
       duration: 1500,
@@ -176,6 +183,8 @@ export default defineComponent({
 
       if (res.type === "state") {
         triggerState(res.state);
+        serverMessagesCount.value = res.messages_count;
+        console.log(serverMessagesCount.value);
         return;
       }
 
