@@ -38,7 +38,11 @@ import RocketMoving3 from "@/assets/RocketMoving3.png";
 import Moon from "@/assets/Moon.png";
 import { ImageTransition, Message, SystemState } from "@/types";
 
-const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}`;
+const SERVER_URL = `${
+  import.meta.env.PROD
+    ? import.meta.env.VITE_PROD_SERVER_URL
+    : import.meta.env.VITE_DEV_SERVER_URL
+}`;
 const TARGET_MESSAGE_THRESHOLD = 1000;
 const ROCKET_MOVING = [RocketMoving1, RocketMoving2, RocketMoving3];
 const MEMES = [MEME1, MEME2, MEME3, MEME4, MEME5, MEME6, MEME7];
