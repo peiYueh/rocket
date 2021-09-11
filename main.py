@@ -123,6 +123,11 @@ manager = ConnectionManager()
 messages_store: List[dict] = []
 
 
+@app.get("/")
+async def home(request: Request):
+    return "Ping"
+
+
 @app.websocket("/ws/{username}")
 async def websocket_endpoint(websocket: WebSocket, username: str):
     await manager.connect(websocket, username)
