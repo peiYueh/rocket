@@ -24,13 +24,13 @@ import {
 import { Satellite } from "@vicons/carbon";
 import { Stars } from "@/components";
 
-import MEME1 from "@/assets/MEME1.png";
-import MEME2 from "@/assets/MEME2.png";
-import MEME3 from "@/assets/MEME3.png";
-import MEME4 from "@/assets/MEME4.png";
-import MEME5 from "@/assets/MEME5.png";
-import MEME6 from "@/assets/MEME6.png";
-import MEME7 from "@/assets/MEME7.png";
+import MEME1 from "@/assets/Rawang/MEME1.png";
+import MEME2 from "@/assets/Rawang/MEME2.png";
+import MEME3 from "@/assets/Rawang/MEME3.png";
+import MEME4 from "@/assets/Rawang/MEME4.png";
+import MEME5 from "@/assets/Rawang/MEME5.png";
+import MEME6 from "@/assets/Rawang/MEME6.png";
+import MEME7 from "@/assets/Rawang/MEME7.png";
 import RocketNotMoving from "@/assets/RocketNotMoving.png";
 import RocketMoving1 from "@/assets/RocketMoving1.png";
 import RocketMoving2 from "@/assets/RocketMoving2.png";

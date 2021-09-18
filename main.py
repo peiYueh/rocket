@@ -208,6 +208,7 @@ async def handle_commands(manager: ConnectionManager, data: str) -> bool:
         return True
     elif data == "!RESET":
         context.transition_to(EarthState())
+        messages_store.clear()
         await manager.broadcast(json.dumps({"type": "event", "event": "Reset"}))
         return True
     elif data == "!ARRIVED":

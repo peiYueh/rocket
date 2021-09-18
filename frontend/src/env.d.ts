@@ -10,4 +10,5 @@ declare module "*.vue" {
 interface ImportMetaEnv {
   VITE_DEV_SERVER_URL: string;
   VITE_PROD_SERVER_URL: string;
+  VITE_SATELLITE: string;
 }
