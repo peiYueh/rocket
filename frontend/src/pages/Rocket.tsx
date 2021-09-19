@@ -24,13 +24,23 @@ import {
 import { Satellite } from "@vicons/carbon";
 import { Stars } from "@/components";
 
-import MEME1 from "@/assets/Rawang/MEME1.png";
-import MEME2 from "@/assets/Rawang/MEME2.png";
-import MEME3 from "@/assets/Rawang/MEME3.png";
-import MEME4 from "@/assets/Rawang/MEME4.png";
-import MEME5 from "@/assets/Rawang/MEME5.png";
-import MEME6 from "@/assets/Rawang/MEME6.png";
-import MEME7 from "@/assets/Rawang/MEME7.png";
+import MEME1 from "@/assets/Setapak/MEME1.png";
+import MEME2 from "@/assets/Setapak/MEME2.png";
+import MEME3 from "@/assets/Setapak/MEME3.png";
+import MEME4 from "@/assets/Setapak/MEME4.png";
+import MEME5 from "@/assets/Setapak/MEME5.png";
+import MEME6 from "@/assets/Setapak/MEME6.png";
+import MEME7 from "@/assets/Setapak/MEME7.png";
+import MEME8 from "@/assets/Setapak/MEME8.png";
+import MEME9 from "@/assets/Setapak/MEME9.png";
+import MEME10 from "@/assets/Setapak/MEME10.png";
+import MEME11 from "@/assets/Setapak/MEME11.png";
+import MEME12 from "@/assets/Setapak/MEME12.png";
+import MEME13 from "@/assets/Setapak/MEME13.png";
+import MEME14 from "@/assets/Setapak/MEME14.png";
+import MEME15 from "@/assets/Setapak/MEME15.png";
+import MEME16 from "@/assets/Setapak/MEME16.png";
+import MEME17 from "@/assets/Setapak/MEME17.png";
 import RocketNotMoving from "@/assets/RocketNotMoving.png";
 import RocketMoving1 from "@/assets/RocketMoving1.png";
 import RocketMoving2 from "@/assets/RocketMoving2.png";
@@ -45,7 +55,7 @@ const SERVER_URL = `${
 }`;
 const TARGET_MESSAGE_THRESHOLD = 1000;
 const ROCKET_MOVING = [RocketMoving1, RocketMoving2, RocketMoving3];
-const MEMES = [MEME1, MEME2, MEME3, MEME4, MEME5, MEME6, MEME7];
+const MEMES = [MEME1, MEME2, MEME3, MEME4, MEME5, MEME6, MEME7, MEME8, MEME9, MEME10, MEME11, MEME12, MEME13, MEME14, MEME15, MEME16, MEME17];
 
 const ERR_NOTIF = {
   title: "Opps, something went wrong",
@@ -283,6 +293,7 @@ export default defineComponent({
           show={status === "CONNECTING" || status === "CLOSED"}
           class="h-full flex justify-center items-center overflow-hidden"
         >
+          {/* @ts-ignore */}
           <VueDanmu
             danmus={danmus}
             speeds={100}
